@@ -9,12 +9,7 @@
 </head>
 <body>
     <header>
-    <nav>
-        <!-- ... Tu menú de navegación ... -->
-    </nav>
-    <img src="imagens/a cat with an astronaut walking on the s-OfficialStableDiffusionsd_xl_base_10s-1442065996.jpg" alt="Logo de dnd">
-</header>
-
+        <nav>
             <ul>
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#">Artistas</a></li>
@@ -25,13 +20,13 @@
             </ul>
         </nav>
     </header>
-   <section class="hero" style="background-image: url('imagenes/Ah-ah, Barbie, you're so fine, you're so-OfficialStableDiffusionsd_xl_base_10s-874054710.jpg');">
-    <div class="hero-content">
-        <h1>Bienvenido a dnd</h1>
-        <p>Tu destino para la mejor música en rojo y negro.</p>
-        <a href="#" class="cta-button">Comenzar</a>
-    </div>
-</section>
+    <section class="hero" style="background-image: url('imagenes/Ah-ah, Barbie, you're so fine, you're so-OfficialStableDiffusionsd_xl_base_10s-874054710_hero.jpg');">
+        <div class="hero-content">
+            <h1>Bienvenido a dnd</h1>
+            <p>Tu destino para la mejor música en rojo y negro.</p>
+            <a href="#" class="cta-button">Comenzar</a>
+        </div>
+    </section>
     <section class="featured">
         <div class="spotify-container">
             <h2>Canción de la Semana:</h2>
@@ -43,136 +38,56 @@
     <footer>
         <!-- contact carlosdaniel_294@naver.com -->
     </footer>
-<script>
-    function cargarCancion() {
-        const codigo = document.getElementById('spotify-code').value;
-        const reproductor = document.getElementById('spotify-player');
-        
-        // Verifica si el código es una URI de Spotify
-        if (codigo.startsWith('spotify:track:')) {
-            const trackUri = codigo;
-            const playOptions = {
-                uris: [trackUri]
-            };
-
-            // Inicializa el reproductor de Spotify
-            const player = new Spotify.Player({
-                name: 'Mi Reproductor de Spotify',
-                getOAuthToken: callback => {
-                    // Aquí puedes obtener el token de acceso desde tu servidor o cualquier otra fuente.
-                    const token = 'TU_TOKEN_DE_ACCESO'; // Reemplaza con tu token de acceso
-                    callback(token);
-                }
-            });
-
-            // Conectar el reproductor a la API de Spotify
-            player.connect().then(success => {
-                if (success) {
-                    console.log('Conexión exitosa con Spotify');
-                }
-            });
-
-            // Reproducir la canción
-            player.addListener('ready', ({ device_id }) => {
-                player
-                    .play(playOptions)
-                    .then(() => {
-                        console.log('Reproduciendo canción');
-                    })
-                    .catch(error => {
-                        console.error('Error al reproducir la canción:', error);
-                    });
-            });
-
-            // Limpia el contenido del reproductor actual
-            reproductor.innerHTML = '';
-
-            // Agrega el reproductor de Spotify
-            reproductor.appendChild(player.container);
-        } else {
-            reproductor.innerHTML = '<p>Por favor, ingresa una URI válida de Spotify.</p>';
-        }
-    }
-</script>
-</body>
-</html>
-i><a href="#">Conciertos</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Bienvenido a dnd</h1>
-            <p>Tu destino para la mejor música en rojo y negro.</p>
-            <a href="#" class="cta-button">Comenzar</a>
-        </div>
-    </section>
-    <section class="featured">
-    <div class="spotify-container"></div>
-        <h2>Canción de la Semana:</h2>
-        <input type="text" id="spotify-code" placeholder="Ejemplo: spotify:track:0wEPue9rjGWgvRYNgvsUfw">
-        <button onclick="cargarCancion()">Cargar Canción</button>
-    </div>
-    <div id="spotify-player"></div>
-</section>
-        <!-- <iframe style="border-radius:12px" src="https://https://open.spotify.com/intl-es/track/0wEPue9rjGWgvRYNgvsUfw_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
-    </section>
-    <footer>
-        <!-- contact carlosdaniel_294@naver.com -->
-    </footer>
-<script>
     <script>
-    function cargarCancion() {
-        const codigo = document.getElementById('spotify-code').value;
-        const reproductor = document.getElementById('spotify-player');
-        
-        // Verifica si el código es una URI de Spotify
-        if (codigo.startsWith('spotify:track:')) {
-            const trackUri = codigo;
-            const playOptions = {
-                uris: [trackUri]
-            };
+        function cargarCancion() {
+            const codigo = document.getElementById('spotify-code').value;
+            const reproductor = document.getElementById('spotify-player');
 
-            // Inicializa el reproductor de Spotify
-            const player = new Spotify.Player({
-                name: 'Mi Reproductor de Spotify',
-                getOAuthToken: callback => {
-                    // Aquí puedes obtener el token de acceso desde tu servidor o cualquier otra fuente.
-                    const token = '526c531cd6fd40ddafc6b55eea5cfeea'; // 526c531cd6fd40ddafc6b55eea5cfeea
-                    callback(token);
-                }
-            });
+            // Verifica si el código es una URI de Spotify
+            if (codigo.startsWith('spotify:track:')) {
+                const trackUri = codigo;
+                const playOptions = {
+                    uris: [trackUri]
+                };
 
-            // Conectar el reproductor a la API de Spotify
-            player.connect().then(success => {
-                if (success) {
-                    console.log('Conexión exitosa con Spotify');
-                }
-            });
+                // Inicializa el reproductor de Spotify
+                const player = new Spotify.Player({
+                    name: 'Mi Reproductor de Spotify',
+                    getOAuthToken: callback => {
+                        // Aquí puedes obtener el token de acceso desde tu servidor o cualquier otra fuente.
+                        const token = 'TU_TOKEN_DE_ACCESO'; // Reemplaza con tu token de acceso
+                        callback(token);
+                    }
+                });
 
-            // Reproducir la canción
-            player.addListener('ready', ({ device_id }) => {
-                player
-                    .play(playOptions)
-                    .then(() => {
-                        console.log('Reproduciendo canción');
-                    })
-                    .catch(error => {
-                        console.error('Error al reproducir la canción:', error);
-                    });
-            });
+                // Conectar el reproductor a la API de Spotify
+                player.connect().then(success => {
+                    if (success) {
+                        console.log('Conexión exitosa con Spotify');
+                    }
+                });
 
-            // Limpia el contenido del reproductor actual
-            reproductor.innerHTML = '';
+                // Reproducir la canción
+                player.addListener('ready', ({ device_id }) => {
+                    player
+                        .play(playOptions)
+                        .then(() => {
+                            console.log('Reproduciendo canción');
+                        })
+                        .catch(error => {
+                            console.error('Error al reproducir la canción:', error);
+                        });
+                });
 
-            // Agrega el reproductor de Spotify
-            reproductor.appendChild(player.container);
-        } else {
-            reproductor.innerHTML = '<p>Por favor, ingresa una URI válida de Spotify.</p>';
+                // Limpia el contenido del reproductor actual
+                reproductor.innerHTML = '';
+
+                // Agrega el reproductor de Spotify
+                reproductor.appendChild(player.container);
+            } else {
+                reproductor.innerHTML = '<p>Por favor, ingresa una URI válida de Spotify.</p>';
+            }
         }
-    }
-</script>
+    </script>
 </body>
 </html>
