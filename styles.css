@@ -1,0 +1,74 @@
+/* Establece los colores principales */
+body {
+    background-color: black;
+    color: white;
+}
+
+/* Estilos del encabezado */
+header {
+    background-color: black;
+    padding: 20px 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: red;
+    font-weight: bold;
+}
+
+/* Estilos del área hero */
+.hero {
+    background-image: url('tu-imagen-hero.jpg');
+    background-size: cover;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 36px;
+    color: red;
+}
+
+p {
+    font-size: 20px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+/* Estilos para el área de contenido destacado */
+.featured {
+    /* Agrega estilos para el contenido destacado aquí */
+}
+
+/* Estilos para el pie de página */
+footer {
+    background-color: black;
+    padding: 20px 0;
+    text-align: center;
+}
