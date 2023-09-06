@@ -27,30 +27,68 @@
             <a href="#" class="cta-button">Comenzar</a>
         </div>
     </section>
-    <section class="featured"><section class="featured">
-    <div class="spotify-container"<h2>Canción de la Semana:</h2>
-        <input type="text" id="spotify-code" placeholder="https://open.spotify.com/intl-es/track/0wEPue9rjGWgvRYNgvsUfw">
-        <button onclick="agregarCancion()">Agregar Canción</button>
+    <section class="featured">
+    <div class="spotify-container">
+        <h2>Canción de la Semana:</h2>
+        <input type="text" id="spotify-code" placeholder="Ejemplo: spotify:track:0wEPue9rjGWgvRYNgvsUfw">
+        <button onclick="cargarCancion()">Cargar Canción</button>
     </div>
     <div id="spotify-player"></div>
 </section>
-
         <!-- <iframe style="border-radius:12px" src="https://https://open.spotify.com/intl-es/track/0wEPue9rjGWgvRYNgvsUfw_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
     </section>
     <footer>
         <!-- contact carlosdaniel_294@naver.com -->
     </footer>
 <script>
-    function agregarCancion() {
+    <script>
+    function cargarCancion() {
         const codigo = document.getElementById('spotify-code').value;
         const reproductor = document.getElementById('spotify-player');
         
-        // Verifica si el código es una URL de Spotify
-        if (codigo.includes('open.spotify.com')) {
-            const codigoEmbed = codigo.replace('open.spotify.com', 'embed.spotify.com');
-            reproductor.innerHTML = `<iframe src="${codigoEmbed}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
+        // Verifica si el código es una URI de Spotify
+        if (codigo.startsWith('spotify:track:')) {
+            const trackUri = codigo;
+            const playOptions = {
+                uris: [trackUri]
+            };
+
+            // Inicializa el reproductor de Spotify
+            const player = new Spotify.Player({
+                name: 'Mi Reproductor de Spotify',
+                getOAuthToken: callback => {
+                    // Aquí puedes obtener el token de acceso desde tu servidor o cualquier otra fuente.
+                    const token = '526c531cd6fd40ddafc6b55eea5cfeea'; // 526c531cd6fd40ddafc6b55eea5cfeea
+                    callback(token);
+                }
+            });
+
+            // Conectar el reproductor a la API de Spotify
+            player.connect().then(success => {
+                if (success) {
+                    console.log('Conexión exitosa con Spotify');
+                }
+            });
+
+            // Reproducir la canción
+            player.addListener('ready', ({ device_id }) => {
+                player
+                    .play(playOptions)
+                    .then(() => {
+                        console.log('Reproduciendo canción');
+                    })
+                    .catch(error => {
+                        console.error('Error al reproducir la canción:', error);
+                    });
+            });
+
+            // Limpia el contenido del reproductor actual
+            reproductor.innerHTML = '';
+
+            // Agrega el reproductor de Spotify
+            reproductor.appendChild(player.container);
         } else {
-            reproductor.innerHTML = '<p>Por favor, ingresa un enlace válido de Spotify.</p>';
+            reproductor.innerHTML = '<p>Por favor, ingresa una URI válida de Spotify.</p>';
         }
     }
 </script>
